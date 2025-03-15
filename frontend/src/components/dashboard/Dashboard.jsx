@@ -70,6 +70,21 @@ export const Dashboard = () => {
     }
   }
 
+// ---------------------------------------------------------------------------
+
+const finalizarTarea = async (id) =>{
+  try {
+    const tarea = tareas.find((tarea) => tarea.id === id);
+    await axios.put(`http://localhost:5000/tareas/${id}`, 
+      {finalizada: !tarea.finalizada},
+      { headers : { Authorization: `Bearer ${token}` } }
+    );
+    setTareas(tareas.map((tarea) => (tarea.id === id ? { ...tarea, finalizada: !tarea.finalizada } : tarea)));
+  } catch (error) {
+    console.error("Error al finalizar la tarea:", error);
+  }
+}      
+
   return (
     <div>
       <h1>Dashboard</h1>
@@ -79,9 +94,9 @@ export const Dashboard = () => {
       onChange={(e) => setNuevaTarea(e.target.value)}
       placeholder="Que tareas hay para hoy?"/>
       <button onClick={agregarTarea}>Agregar</button>
-      <ul>
+      <ul>  
       {tareas.map((tarea) => (
-          <li key={tarea.id}>
+          <li key={tarea.id} style={{textDecoration: tarea.finalizada ? "line-through" : "none"}}>
             {tareaEditada === tarea.id ? (
               <>
                 <input 
@@ -100,6 +115,9 @@ export const Dashboard = () => {
                   setTareaEditada(tarea.id);
                   setTextoEditado(tarea.texto);
                 }}>Editar</button>
+                <button onClick={() => finalizarTarea(tarea.id)}>
+                  {tarea.finalizada ? "Desmarcar" : "Finalizar"}  
+                </button>
               </>
             )}
           </li>
