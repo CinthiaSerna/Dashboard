@@ -5,6 +5,8 @@ export const Dashboard = () => {
 
   const [tareas, setTareas] = useState([]);
   const [nuevaTarea, setNuevaTarea] = useState("");
+  const [tareaEditada, setTareaEditada] = useState(null);
+  const [textoEditado, setTextoEditado] = useState("");
 
   const token = localStorage.getItem("token"); 
 
@@ -48,6 +50,8 @@ export const Dashboard = () => {
         { headers : { Authorization: `Bearer ${token}` } }
       );
       setTareas(tareas.map((tarea) => (tarea.id === id ? response.data : tarea)));
+      setTareaEditada(null);
+      setTextoEditado("");
     } catch (error) {
       console.error("Error al editar la tarea:", error);
     }
@@ -76,16 +80,28 @@ export const Dashboard = () => {
       placeholder="Que tareas hay para hoy?"/>
       <button onClick={agregarTarea}>Agregar</button>
       <ul>
-        {tareas.map((tarea) => (
+      {tareas.map((tarea) => (
           <li key={tarea.id}>
-            {tarea.texto}
-            <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-            <button onClick={() => {
-              const nuevoTexto = prompt("Editar tarea", tarea.texto);
-              if(nuevoTexto) {
-                editarTarea(tarea.id, nuevoTexto);
-              }
-            }}>Editar</button>
+            {tareaEditada === tarea.id ? (
+              <>
+                <input 
+                  type="text" 
+                  value={textoEditado} 
+                  onChange={(e) => setTextoEditado(e.target.value)} 
+                />
+                <button onClick={() => editarTarea(tarea.id, textoEditado)}>Guardar</button>
+                <button onClick={() => setTareaEditada(null)}>Cancelar</button>
+              </>
+            ) : (
+              <>
+                {tarea.texto}
+                <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
+                <button onClick={() => {
+                  setTareaEditada(tarea.id);
+                  setTextoEditado(tarea.texto);
+                }}>Editar</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
