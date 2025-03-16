@@ -44,6 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 130px;
 }
 
 .metricas-container {
@@ -167,12 +168,34 @@ li{
     display: flex;
     gap: 0px;
     flex-shrink: 0;
-    transform: translateX(165%);
+    transform: translateX(160%);
 }
 
 .boton-finalizar{
     transform: translateX(360%);
 }
 
+.input-editar {
+    all: unset;
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+    font-size: 20px;
+    padding: 5px;
+    transform: translateX(44%);
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 10px;
+    width: auto;
+}
+
+@keyframes balanceo {
+    0% {
+      transform: rotate(-10deg);
+    }
+    100% {
+      transform: rotate(10deg);
+    }
+  }
 
 

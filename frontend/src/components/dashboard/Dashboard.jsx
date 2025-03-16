@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./dashboard.css";
 import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa"; 
+import flecha from '../../img/flecha-curva.png';
+import flecha2 from '../../img/flecha-curva2.png';
+import titulo from '../../img/titulo.png';
 
 
 export const Dashboard = () => {
@@ -108,11 +111,17 @@ export const Dashboard = () => {
 
   const totalTareas = tareas.length;
   const tareasFinalizadas = contarTareasFinalizadas();
-  const porcentajeFinalizadas =
-    totalTareas === 0 ? 0 : (tareasFinalizadas / totalTareas) * 100;
+  const porcentajeFinalizadas = totalTareas === 0 ? 0 : Math.floor((tareasFinalizadas / totalTareas) * 100);
 
   return (
     <div className="formulario">
+      <img src={titulo} alt="titulo" style={{
+        width: "600px", 
+        height: "200px", 
+        marginLeft: "1230px",
+        position: "absolute",
+        marginTop: "-500px",
+        zIndex: 9999}} />
       <div className="metricas-container">
         <div className="metricas">
           <p style={{fontSize: "40px", backgroundColor: "#FAF4B7", borderRadius: "50px", border: "4px solid #ECC5FB"}}>Total de tareas: {totalTareas}</p>
@@ -120,6 +129,22 @@ export const Dashboard = () => {
             <p>Tareas finalizadas: {tareasFinalizadas}</p>
             <p>Tareas por Finalizar: {contarTareasNoFinalizadas()}</p>
           </div>
+          <img src={flecha} alt="flecha" style={{
+            width: "100px", 
+            height: "100px", 
+            animation: "balanceo 1s ease-in-out infinite alternate",
+            position: "absolute",
+            marginRight: "360px",
+            top: "400px",
+            }} />
+          <img src={flecha2} alt="flecha" style={{
+            width: "100px", 
+            height: "100px", 
+            animation: "balanceo 1s ease-in-out infinite alternate",
+            position: "absolute",
+            marginLeft: "360px",
+            top: "400px",
+            }} />  
         </div>
         <div className="barra-container">
         <div
@@ -143,6 +168,14 @@ export const Dashboard = () => {
           ></div>
         </div>
         </div>
+        <p style={{
+          fontSize: "30px",
+          textAlign: "center",
+          width: "50px",  
+          position: "absolute",
+          left: "880px",  
+          top: "380px",
+        }}>{porcentajeFinalizadas}%</p>
       </div>
       <div className="agregarTarea-container">
         <div className="agregar-tarea">
@@ -173,6 +206,7 @@ export const Dashboard = () => {
                 <>
                   <input 
                     type="text"
+                    className="input-editar"
                     value={textoEditado}
                     onChange={(e) => setTextoEditado(e.target.value)}
                   />
@@ -190,7 +224,6 @@ export const Dashboard = () => {
                     <button onClick={() => eliminarTarea(tarea.id)}>
                       <FaTrash size={20} color="#BF3131" />
                     </button>
-
                     <button onClick={() => {
                       setTareaEditada(tarea.id);
                       setTextoEditado(tarea.texto);
