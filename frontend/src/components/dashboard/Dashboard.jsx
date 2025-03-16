@@ -85,9 +85,22 @@ const finalizarTarea = async (id) =>{
   }
 }      
 
+// ---------------------------------------------------------------------------
+
+  const contarTareasFinalizadas = () =>{
+    return tareas.filter(tarea => tarea.finalizada).length;
+  }
+
+  const contarTareasNoFinalizadas = () =>{
+    return tareas.filter(tarea => !tarea.finalizada).length;
+  }
+
   return (
     <div>
       <h1>Dashboard</h1>
+      <p>Total de tareas: {tareas.length}</p>
+      <p>Tareas finalizadas: {contarTareasFinalizadas()}</p>
+      <p>Tareas por Finalizar: {contarTareasNoFinalizadas()}</p>
       <input 
       type="text"
       value={nuevaTarea}
