@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./dashboard.css";
+import { FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa"; 
+
 
 export const Dashboard = () => {
   const [tareas, setTareas] = useState([]);
@@ -113,7 +115,7 @@ export const Dashboard = () => {
     <div className="formulario">
       <div className="metricas-container">
         <div className="metricas">
-          <p>Total de tareas: {totalTareas}</p>
+          <p style={{fontSize: "40px", backgroundColor: "#FAF4B7", borderRadius: "50px", border: "4px solid #ECC5FB"}}>Total de tareas: {totalTareas}</p>
           <div className="porcentaje-tareas">
             <p>Tareas finalizadas: {tareasFinalizadas}</p>
             <p>Tareas por Finalizar: {contarTareasNoFinalizadas()}</p>
@@ -153,40 +155,55 @@ export const Dashboard = () => {
           <button onClick={agregarTarea}>Agregar</button>
         </div>
       </div>
-      <ul>
-        {tareas.map((tarea) => (
-          <li
-            key={tarea.id}
-            style={{
-              textDecoration: tarea.finalizada ? "line-through" : "none",
-            }}
-          >
-            {tareaEditada === tarea.id ? (
-              <>
-                <input
-                  type="text"
-                  value={textoEditado}
-                  onChange={(e) => setTextoEditado(e.target.value)}
-                />
-                <button onClick={() => editarTarea(tarea.id, textoEditado)}>Guardar</button>
-                <button onClick={() => setTareaEditada(null)}>Cancelar</button>
-              </>
-              ) : (
-              <>
-                {tarea.texto}
-                <button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
-                <button onClick={() => {
-                  setTareaEditada(tarea.id);
-                  setTextoEditado(tarea.texto);
-                }}>Editar</button>
+      <div className="contenedor-lista">
+        <ul>
+          {tareas.map((tarea) => (
+            <li
+              key={tarea.id}
+              style={{
+                textDecoration: tarea.finalizada ? "line-through" : "none",
+              }}
+            >
+              <div className="boton-finalizar">
                 <button onClick={() => finalizarTarea(tarea.id)}>
-                  {tarea.finalizada ? "Desmarcar" : "Finalizar"}  
+                  {tarea.finalizada ? <FaTimes size={20} color="#F38C79" /> : <FaCheck size={20} color="#A0C878" />}
                 </button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+              </div>
+              {tareaEditada === tarea.id ? (
+                <>
+                  <input 
+                    type="text"
+                    value={textoEditado}
+                    onChange={(e) => setTextoEditado(e.target.value)}
+                  />
+                  <button onClick={() => editarTarea(tarea.id, textoEditado)}>
+                    <FaCheck size={18} color="#5DB996" />
+                  </button>
+                  <button onClick={() => setTareaEditada(null)}>
+                    <FaTimes size={18} color="#D84040" />
+                  </button>
+                </>
+                ) : (
+                <>
+                  <span className="texto-tarea">{tarea.texto}</span>
+                  <div className="botones-tarea">
+                    <button onClick={() => eliminarTarea(tarea.id)}>
+                      <FaTrash size={20} color="#BF3131" />
+                    </button>
+
+                    <button onClick={() => {
+                      setTareaEditada(tarea.id);
+                      setTextoEditado(tarea.texto);
+                    }}>
+                      <FaEdit size={20} color="#7886C7" />
+                    </button>
+                  </div>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

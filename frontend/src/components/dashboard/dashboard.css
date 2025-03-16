@@ -73,7 +73,7 @@
     height: 80px;
     margin-left: 15px;
     position: relative;
-    top: -265px;
+    top: -290px;
     
 }
 
@@ -90,6 +90,89 @@
     display: flex;
     position: relative;
     top: -55px;
-    left: 50%;
+    left: 130%;
     transform: translateX(155%);
+    padding: 15px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
 }
+
+.contenedor-lista{
+    position: absolute;
+    width: 600px;
+    top: 45px;
+}
+
+ul {
+    position: relative;
+    transform: none; 
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    list-style: none;
+    padding: 0;
+}
+
+
+li{ 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    gap: 8px;
+    width: 600px;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 0 auto; 
+    font-size: 25px;
+    margin-bottom: -18px;
+}
+
+.texto-tarea {
+    flex-grow: 1; 
+    text-align: left;
+    margin-left: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+}
+
+.contenedor-lista button{
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -50px;
+    transform: translateX(-20%);
+    padding: 0; 
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    margin-left: 15px;
+    cursor: pointer;
+    background: transparent; 
+    border: none; 
+    flex-shrink: 0;
+}
+
+.contenedor-lista li{
+    transform: translateX(-28%);
+}
+
+.botones-tarea {
+    display: flex;
+    gap: 0px;
+    flex-shrink: 0;
+    transform: translateX(165%);
+}
+
+.boton-finalizar{
+    transform: translateX(360%);
+}
+
+
+

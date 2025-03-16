@@ -36,7 +36,8 @@ body {
   font-size: 14px;
   width: 90%;
   border: 3px solid #9B7EBD;
-border-radius: 5px;
+  border-radius: 5px; 
+  font-size: 20px;
 }
 
 .login-container input:focus {
@@ -49,12 +50,14 @@ button {
   outline: none;
   color: #3B1E54;
   padding: 1em;
-  padding-left: 3em;
-  padding-right: 3em;
-  margin-left: 160px;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-left: 150px;
   border: 2px dashed #3B1E54;
   border-radius: 15px;
   background-color: #FFCCEA;
   box-shadow: 0 0 0 4px #9B7EBD, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
   transition: 0.1s ease-in-out, 0.4s color;
+  font-size: 20px;
+  cursor: pointer;
 }
