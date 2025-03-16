@@ -1,0 +1,95 @@
+.formulario {
+    background-image: url("../../img/hoja_de_papel.jpg");
+    width: 600px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 55%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+}
+
+.formulario p{
+    color: black;
+    display: inline-block;
+    padding: 20px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.porcentaje-tareas p{
+    font-size: 20px;
+    flex-direction: column;
+    width: 150px;
+    margin-left: 15px;
+    align-items: center;
+}
+
+.metricas {
+    background-color: #FFCCEA;
+    border-radius: 30px;
+    margin-left: 720px;
+    margin-right: -500px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #9B7EBD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.metricas-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.barra-container{
+    position: relative;
+    left: 775px;
+    border-radius: 50px;
+    background-color: #FFF6E3;
+    top: -55px;
+}
+
+.agregarTarea-container{
+    position: relative;
+    transform: translateX(-155%);
+    margin-top: 230px;
+}
+
+.agregar-tarea{
+    position: relative;
+    width: 100px;
+    height: 80px;
+    margin-left: 15px;
+    position: relative;
+    top: -265px;
+    
+}
+
+.agregar-tarea input{
+    width: 370px;
+    height: 50px;
+    border: 3px solid #9B7EBD;
+    border-radius: 5px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+
+.agregar-tarea button{
+    display: flex;
+    position: relative;
+    top: -55px;
+    left: 50%;
+    transform: translateX(155%);
+}
