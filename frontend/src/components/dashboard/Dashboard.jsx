@@ -95,12 +95,19 @@ const finalizarTarea = async (id) =>{
     return tareas.filter(tarea => !tarea.finalizada).length;
   }
 
+  const totalTareas = tareas.length;
+  const tareasFinalizadas = contarTareasFinalizadas();
+  const porcentajeFinalizadas = totalTareas === 0 ? 0 : (tareasFinalizadas / totalTareas) * 100;
+
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Total de tareas: {tareas.length}</p>
-      <p>Tareas finalizadas: {contarTareasFinalizadas()}</p>
+      <p>Total de tareas: {totalTareas}</p>
+      <p>Tareas finalizadas: {tareasFinalizadas}</p>
       <p>Tareas por Finalizar: {contarTareasNoFinalizadas()}</p>
+      <div style={{ border: "1px solid black", width: "100%", height: "30px", marginBottom: '20px' }}>
+        <div style={{ width: `${porcentajeFinalizadas}%`, height: '100%', backgroundColor: 'purple'}}></div>  
+      </div>
       <input 
       type="text"
       value={nuevaTarea}
