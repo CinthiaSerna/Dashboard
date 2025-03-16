@@ -109,9 +109,14 @@ export const Dashboard = () => {
     return tareas.filter((tarea) => !tarea.finalizada).length;
   };
 
+// -----------------------------------------------------------------------------
+// Metricas
+
   const totalTareas = tareas.length;
   const tareasFinalizadas = contarTareasFinalizadas();
   const porcentajeFinalizadas = totalTareas === 0 ? 0 : Math.floor((tareasFinalizadas / totalTareas) * 100);
+
+// -----------------------------------------------------------------------------
 
   return (
     <div className="formulario">
@@ -122,6 +127,8 @@ export const Dashboard = () => {
         position: "absolute",
         marginTop: "-500px",
         zIndex: 9999}} />
+      {/* // ---------------------------------------------------------------- */}
+      {/* // Metricas */}
       <div className="metricas-container">
         <div className="metricas">
           <p style={{fontSize: "40px", backgroundColor: "#FAF4B7", borderRadius: "50px", border: "4px solid #ECC5FB"}}>Total de tareas: {totalTareas}</p>
@@ -129,6 +136,7 @@ export const Dashboard = () => {
             <p>Tareas finalizadas: {tareasFinalizadas}</p>
             <p>Tareas por Finalizar: {contarTareasNoFinalizadas()}</p>
           </div>
+          {/* // ---------------------------------------------------------------- */}
           <img src={flecha} alt="flecha" style={{
             width: "100px", 
             height: "100px", 
@@ -145,6 +153,8 @@ export const Dashboard = () => {
             marginLeft: "360px",
             top: "400px",
             }} />  
+          {/* // ---------------------------------------------------------------- */}
+          {/* // Barra de metricas */}
         </div>
         <div className="barra-container">
         <div
@@ -156,7 +166,8 @@ export const Dashboard = () => {
             border: "4px dotted #3B1E54",
             overflow: "hidden",
           }}
-        >
+        > 
+        {/* // Porcentaje de metricas */}
           <div
             style={{
               width: `${porcentajeFinalizadas}%`,
@@ -167,6 +178,7 @@ export const Dashboard = () => {
             }}
           ></div>
         </div>
+        {/* // ---------------------------------------------------------------- */}
         </div>
         <p style={{
           fontSize: "30px",
@@ -177,6 +189,8 @@ export const Dashboard = () => {
           top: "380px",
         }}>{porcentajeFinalizadas}%</p>
       </div>
+      {/* // ---------------------------------------------------------------- */}
+      {/* // Boton - Agregar tarea */}
       <div className="agregarTarea-container">
         <div className="agregar-tarea">
           <input
@@ -188,6 +202,8 @@ export const Dashboard = () => {
           <button onClick={agregarTarea}>Agregar</button>
         </div>
       </div>
+      {/* // ---------------------------------------------------------------- */}
+      {/* // Tachar tarea finalizada */}
       <div className="contenedor-lista">
         <ul>
           {tareas.map((tarea) => (
@@ -202,6 +218,8 @@ export const Dashboard = () => {
                   {tarea.finalizada ? <FaTimes size={20} color="#F38C79" /> : <FaCheck size={20} color="#A0C878" />}
                 </button>
               </div>
+              {/* // ---------------------------------------------------------------- */}
+              {/* // Editar tarea */}
               {tareaEditada === tarea.id ? (
                 <>
                   <input 
@@ -217,7 +235,9 @@ export const Dashboard = () => {
                     <FaTimes size={18} color="#D84040" style={{marginLeft: "250px", position: "absolute"}}/>
                   </button>
                 </>
+                // ----------------------------------------------------------------
                 ) : (
+                //  Mostrar tarea  //  Boton - Eliminar tarea  //  Boton - Editar tarea
                 <>
                   <span className="texto-tarea">{tarea.texto}</span>
                   <div className="botones-tarea">
