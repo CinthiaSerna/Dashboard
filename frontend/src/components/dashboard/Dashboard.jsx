@@ -211,10 +211,10 @@ export const Dashboard = () => {
                     onChange={(e) => setTextoEditado(e.target.value)}
                   />
                   <button onClick={() => editarTarea(tarea.id, textoEditado)}>
-                    <FaCheck size={18} color="#5DB996" />
+                    <FaCheck size={18} color="#5DB996" style={{marginLeft: "440px", position: "absolute"}}/>
                   </button>
                   <button onClick={() => setTareaEditada(null)}>
-                    <FaTimes size={18} color="#D84040" />
+                    <FaTimes size={18} color="#D84040" style={{marginLeft: "250px", position: "absolute"}}/>
                   </button>
                 </>
                 ) : (
