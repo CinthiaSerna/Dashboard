@@ -37,7 +37,8 @@ function Login() {
     };
 
   return (
-    <div>
+    <div className="login">
+        <div className="login-container">
         <h1>Inicio de Sesión</h1>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -55,6 +56,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}/>
             <button type="submit">Iniciar Sesión</button>
         </form>
+        </div>
     </div>
   )
 }
