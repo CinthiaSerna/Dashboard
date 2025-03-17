@@ -1,19 +1,22 @@
 --- PASOS PARA LA INSTALACIÓN: ---
+1. Para clonar el repositorio abriras una terminal y ejecutarás | git clone + el link http del repositorio | así se te descargará el proyecto
 * Después de clonar el repositorio y abrir el proyecto te encontrarás con 2 carpetas (frontend y backend)
-1. Necesitarás 2 terminales, una dirigida al backend y otra dirigida al frontend:
+2. Necesitarás 2 terminales, una dirigida al backend y otra dirigida al frontend:
    
    -> .../Dashboard/backend
    
    -> .../Dashboard/frontend
 
 * En cada terminal (en la del backend y la del frontend) ejecutaras (npm install) para que así todas las dependencias y paquetes del proyecto se instalen
-2. Para ejecutarlo:
+* Si no tienes descargado nodemon, en la terminal del backend despues del comando de instalar ejecutarás | npm install -g nodemon |  y así descargaras nodemon de forma global
+y que así al inicializar el backend todo corra correctamente
+3. Para ejecutarlo:
 * En la terminal dirigida al backend pondras | -> npm run dev | y así se iniciará el backend
 * En la terminal dirigida al frontend pondrás | -> npm start | y así se iniciará el frontend y se abrirá en el navegador
 
 (Es necesario que en cada una de la terminales se haya ejecutado el npm install para que todo funcione correctamete)
   
-3. Ya en la página las credenciales son:
+4. Ya en la página las credenciales son:
   * Usuario: cinthia
   * Contraseña: cinthia123
 
